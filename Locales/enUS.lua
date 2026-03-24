@@ -11,6 +11,7 @@ ns.enUS = {
 ["NPC颜色"] = "NPC Colors",
 ["辅助功能"] = "Accessibility",
 ["配置"] = "Config",
+["导入导出"] = "Import/Export",
 
 --位置相关
 ["中上"] = "Top Center",
@@ -187,6 +188,8 @@ ns.enUS = {
 
 ["点击更改颜色"] = "Click to change color",
 
+["我是猪,帮我设置暴雪姓名板"] = "I am a pig, help me set Blizzard nameplates",
+["点击自动设置ESC-选项-姓名板里的相关选项"] = "Click to auto set ESC-Options-Nameplate related options",
 ["恢复插件默认设置"] = "Restore Addon Default Settings",
 
 -- Tab6 / Export keys
@@ -208,5 +211,7 @@ ns.enUS = {
 ["缺失配置确认"] = "Missing config keys detected (see chat),\ndefaults have been applied. Continue import and reload UI?",
 ["确认导入"] = "Confirm Import",
 ["继续执行将失去现有的配置\n是否需要恢复默认"] = "Continuing will lose the current configuration\nDo you want to restore defaults?",
+["已设置暴雪姓名板选项"] = "Blizzard nameplate options set",
+["战斗中无法设置暴雪姓名板选项"] = "Cannot set Blizzard nameplate options in combat",
 ["复制完成"] = "Copy completed"
 }

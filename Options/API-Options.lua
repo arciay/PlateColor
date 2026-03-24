@@ -47,16 +47,50 @@ function ns.AddClickBC(parent,frame, id, width, text, xOffset, yOffset)
 end
 
 --点击功能按钮
-function ns.AddfuncButton(parent,point,name,x,y,width,height)
-	local width = width or 140
-	local height = height or 25
-	local x = x or 470
-	local y = y or 1
-	local funcButton = CreateFrame("Button", nil, parent, "UIPanelButtonTemplate")
+function ns.AddfuncButton(parent,y,name,tip)
+	local rowFrame = CreateFrame("Frame", nil, parent)
+    rowFrame:SetSize(630, 26)
+    rowFrame:SetPoint("TOPLEFT", 10, -10+ns.Y[y]*-35)
+	local SliderBackground = rowFrame:CreateTexture(nil, "BACKGROUND")
+	SliderBackground:SetTexture(130937)
+	SliderBackground:SetAllPoints(rowFrame)
+	SliderBackground:SetColorTexture(0, 0, 0, 0) -- 设置背景颜色为黑色，透明度为0.5
+	SliderBackground:SetScript("OnEnter", function(self)
+		self:SetColorTexture(0.5, 0.5, 0.5, .2)
+	end)
+	SliderBackground:SetScript("OnLeave", function(self)
+		self:SetColorTexture(0, 0, 0, 0)
+	end)
+	local funcButton = CreateFrame("Button", nil, rowFrame, "UIPanelButtonTemplate")
 	funcButton:SetText(name)
-	funcButton:SetSize(width,height)
-	funcButton:SetPoint("LEFT",point,"LEFT", x, y)
+	funcButton:SetSize(230,25)
+	funcButton:SetPoint("LEFT",rowFrame,"LEFT", 300, 1)
 	funcButton:SetScript("OnClick", function()end)
+	funcButton:SetScript("OnEnter",function(self) 
+		SliderBackground:SetColorTexture(0.5, 0.5, 0.5, .2)
+		if tip then
+			GameTooltip:SetOwner(self, "ANCHOR_TOP")
+			GameTooltip:AddLine("|cffFFFFFF"..tip.."|r") 
+			GameTooltip:Show()
+		end
+	end)
+	funcButton:SetScript("OnLeave", function(self)    
+		SliderBackground:SetColorTexture(0, 0, 0, 0)
+		if tip then
+			GameTooltip:Hide()
+		end
+	end)
+	
+	local lefttext = rowFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
+	lefttext:SetPoint("LEFT", SliderBackground, "LEFT", 90, 0)
+	lefttext:SetText(name)
+	lefttext:SetFont(ns.fonts, 14, "OUTLINE")
+	lefttext:SetTextColor(1,.82,0)
+
+	ns.Y[y] = ns.Y[y] + 1	--最后增加一次起始位置
+	local cleckandtext = {}
+	cleckandtext.text = lefttext
+	cleckandtext.button = funcButton
 	return funcButton
 end
 
