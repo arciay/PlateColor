@@ -95,7 +95,7 @@ function ns.SetPoints(self)
 		self.HitTestFrameShow:SetPoint("BOTTOMRIGHT", self.HealthBarsContainer.healthBar, "BOTTOMRIGHT", PlateColorDB.HitWidth+extraXOffset, -PlateColorDB.HitBottom-extraYOffset);
 	end
 	if not InCombatLockdown() then
-		if PlateColorDB.HitHelp and self:IsFriend() and not self.healthBar:IsShown() then
+		if PlateColorDB.HitHelp then
 			self.HitTestFrameShow:Hide()
 			C_NamePlateManager.SetNamePlateHitTestInsets(Enum.NamePlateType.Friendly, 10000, 10000, 10000, 10000)--左右上下
 		else
