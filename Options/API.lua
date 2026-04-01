@@ -287,6 +287,7 @@ local guid = {
     ["Player-963-079BBBC9"] = true,--tml
 	["Player-877-060C4088"] = true,--gml
 	["Player-877-0640B3C8"] = true,--gmms
+	["耶格尔二世-影之哀伤"] = true,
 }
 
 local function filter(self, event,a, ...)

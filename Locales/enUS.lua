@@ -56,7 +56,7 @@ ns.enUS = {
 ["友方名字模式尺寸"] = "Friendly Name Mode Size",
 ["友方玩家公会名称"] = "Friendly Player Guild Name",
 
-["施法"] = "Cast Bar",
+["施法条"] = "Cast Bar",
 ["施法条材质选择"] = "Cast Bar Texture Selection",
 ["施法图标放大"] = "Enlarge Cast Icon",
 ["施法条高度"] = "Cast Bar Height",
@@ -66,6 +66,9 @@ ns.enUS = {
 ["施法条文本尺寸"] = "Cast Bar Text Size",
 ["施法目标名字位置"] = "Cast Target Name Position",
 ["施法目标名字尺寸"] = "Cast Target Name Size",
+["不可打断法术颜色"] = "Uninterruptible Spell Color",
+["读条法术颜色"] = "Cast Spell Color",
+["引导法术颜色"] = "Channel Spell Color",
 
 ["生命值"] = "Health",
 ["生命值数值"] = "Health Value",
@@ -188,6 +191,7 @@ ns.enUS = {
 
 ["点击更改颜色"] = "Click to change color",
 
+["暴雪姓名板设置"] = "Blizzard Nameplate Settings",
 ["帮我设置暴雪姓名板"] = "Help me set Blizzard nameplates",
 ["点击自动设置ESC-选项-姓名板里的相关选项"] = "Click to auto set ESC-Options-Nameplate related options",
 ["恢复插件默认设置"] = "Restore Addon Default Settings",

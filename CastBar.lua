@@ -1,10 +1,19 @@
 local _, ns = ...
 
 --施法条
-local trueColor = CreateColor(0.6, 0.6, 0.6, 1)
+local trueColor = CreateColor(0.6,0.6,0.6)--不可打断
+local colorYellow = CreateColor(0.9,0.9,0) -- 施法中
+local colorGreen = CreateColor(0, 1, 0)  -- 引导中
 local colorRed = CreateColor(1, 0, 0, 1)    -- 失败/打断
-local colorYellow = CreateColor(0.9, 0.9, 0, 1) -- 施法中
-local colorGreen = CreateColor(0, 1, 0, 1)    -- 引导中
+
+--设置施法条颜色
+function ns.SetCastBarInitColor()
+	trueColor:SetRGB(PlateColorDB.nointerrupcolor.r, PlateColorDB.nointerrupcolor.g, PlateColorDB.nointerrupcolor.b)
+	colorYellow:SetRGB(PlateColorDB.castcolor.r, PlateColorDB.castcolor.g, PlateColorDB.castcolor.b)
+	colorGreen:SetRGB(PlateColorDB.channelcolor.r, PlateColorDB.channelcolor.g, PlateColorDB.channelcolor.b)
+end
+ns.event("PLAYER_ENTERING_WORLD", ns.SetCastBarInitColor)
+
 local function SetPlateCastBar(self, event)
     if event == "PLAYER_ENTERING_WORLD" then return end
     if self:IsForbidden() or not self.unit then return end

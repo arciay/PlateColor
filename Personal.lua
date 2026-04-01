@@ -77,7 +77,9 @@ function ns.SetPersonalTexture()
 		AB:HookScript("OnValueChanged", function(self)
 			if not self:IsShown() then return end
 			if self.powerName and self.powerName == "STAGGER" then
-				self.Text:SetText(ns.value(self:GetValue()))
+				local stagger = (UnitStagger and UnitStagger("player")) or 0
+				local maxHealth = UnitHealthMax("player") or 1
+				self.Text:SetText(string.format("%d", maxHealth > 0 and (stagger / maxHealth * 100) or 0))
 			elseif self.powerName then
 				self.Text:SetText(string.format("%d",self:GetValue()))
 			end
@@ -86,7 +88,9 @@ function ns.SetPersonalTexture()
 	AB.Text:SetShown(true)
 	AB.Text:SetFont(ns.fonts, PlateColorDB.myHPheight*1.3, "OUTLINE")
 	if AB.powerName and AB.powerName == "STAGGER" then
-		AB.Text:SetText(ns.value(AB:GetValue()))
+		local stagger = (UnitStagger and UnitStagger("player")) or 0
+		local maxHealth = UnitHealthMax("player") or 1
+		AB.Text:SetText(string.format("%d", maxHealth > 0 and (stagger / maxHealth * 100) or 0))
 	elseif AB.powerName then
 		AB.Text:SetText(string.format("%d",AB:GetValue()))
 	end
