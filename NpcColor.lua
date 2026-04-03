@@ -1,21 +1,33 @@
 ﻿local _, ns = ...
 
---是BOSS或者精英-
+--特定NPC一定是可打断怪的判断
+local function IsKickNpc(unitFrame)
+	local mapid = C_Map.GetBestMapForUnit("player")
+	if not ns.MM(mapid) and mapid == 2532 then--梦境裂隙BOSS区域,91小怪一定是可打断怪
+		local npclevel = unitFrame.unit and UnitLevel(unitFrame.unit) or 0
+		return  npclevel == 91
+	end
+end
+
+--是BOSS或者精英
 local trueColor = CreateColor(0,0,0,0)
 local falseColor = CreateColor(0,0,0,0)
 local colortable = { r = 0, g = 0, b = 0 }
 function ns.NpcLevelColor(unitFrame)
 	if not unitFrame then return end
+	if not unitFrame.unit then return end
 	if not UnitCanAttack("player",unitFrame.unit) then return end
 	local inInstance, instanceType = IsInInstance()
 	local playerlevel = UnitLevel("player")
-	local npclevel = inInstance and instanceType == "party" and unitFrame.unit and UnitLevel(unitFrame.unit) or 0
-	local npcBoss =  unitFrame.unit and UnitLevel(unitFrame.unit) == -1 or npclevel == playerlevel+2
-	local PowerMANA = unitFrame.unit and UnitPowerType(unitFrame.unit) == 0
+	local npclevel = inInstance and instanceType == "party" and UnitLevel(unitFrame.unit) or 0
+	local npcBoss =  UnitLevel(unitFrame.unit) == -1 or npclevel == playerlevel+2
+	local PowerMANA = UnitPowerType(unitFrame.unit) == 0
 	if npclevel == playerlevel+1 and PlateColorDB.NpcLv1 then
 		return PlateColorDB.NpcLv1Color
 	elseif npcBoss and PlateColorDB.NpcLv2 then
 		return PlateColorDB.NpcLv2Color
+	elseif IsKickNpc(unitFrame) and PlateColorDB.Npckick then--特定NPC一定是可打断怪
+		return PlateColorDB.NpckickColor
 	elseif unitFrame.NpckickColor ~= nil and PlateColorDB.Npckick then
 		trueColor:SetRGBA(PlateColorDB.NpcNokickColor["r"], PlateColorDB.NpcNokickColor["g"], PlateColorDB.NpcNokickColor["b"], 1)
 		falseColor:SetRGBA(PlateColorDB.NpckickColor["r"], PlateColorDB.NpckickColor["g"], PlateColorDB.NpckickColor["b"], 1)
@@ -46,7 +58,6 @@ local function NpcCastColor(self,event)
 	--if not string.match(event,"STAR") then return end
 	if self:IsForbidden() then return end
 	if not self.unit then return end
-	local npclevel = UnitLevel(self.unit) or 0
 	local unitFrame = self:GetParent()
 	local CastingInfo = select(8, UnitCastingInfo(self.unit))
 	local ChanelInfo = select(7, UnitChannelInfo(self.unit))
