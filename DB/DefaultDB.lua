@@ -16,7 +16,7 @@ ns.PlateColorDB = {
 	
 	hpbarTexture = "PC-White",	--血条材质选择
 	hpbgAlpha = 0.55,			--血条背景透明度
-	hpBorder = true,			--血条直角边框
+	hpBorderTexture = "1px",	--血条边框材质选择
 	hpWidht = 25,				--血条宽度
 	hpHeight = 14,				--血条高度
 	

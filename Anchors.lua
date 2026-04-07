@@ -52,28 +52,15 @@ function ns.SetPoints(self)
 		self.HealthBarsContainer.healthBar:SetStatusBarTexture(ns.HpTextures["PC-White"])
 	end
 	--边框和背景
-	if PlateColorDB.hpBorder then
-		self.HealthBarsContainer.healthBar.bgTexture:SetTexture("Interface\\Addons\\PlateColor\\texture\\bgTexture.png")
-		self.HealthBarsContainer.healthBar.bgTexture:SetPoint("TOPLEFT", -1 , 1)
-		self.HealthBarsContainer.healthBar.bgTexture:SetPoint("BOTTOMRIGHT", 1 , -1)
-		self.HealthBarsContainer.healthBar.selectedBorder:SetTexture("Interface\\Addons\\PlateColor\\texture\\selectedBorder.png")
-		self.HealthBarsContainer.healthBar.selectedBorder:SetPoint("TOPLEFT", -2, 1)
-		self.HealthBarsContainer.healthBar.selectedBorder:SetPoint("BOTTOMRIGHT", 2, -1)
-		self.HealthBarsContainer.healthBar.deselectedOverlay:SetTexture("Interface\\Addons\\PlateColor\\texture\\deselectedOverlay.png")
-		self.HealthBarsContainer.healthBar.deselectedOverlay:SetPoint("TOPLEFT", -2, 1)
-		self.HealthBarsContainer.healthBar.deselectedOverlay:SetPoint("BOTTOMRIGHT", 2, -1)
-	else
-		self.HealthBarsContainer.healthBar.bgTexture:SetAtlas("UI-HUD-CoolDownManager-Bar-BG")
-		self.HealthBarsContainer.healthBar.bgTexture:SetPoint("TOPLEFT", -2 , 3)
-		self.HealthBarsContainer.healthBar.bgTexture:SetPoint("BOTTOMRIGHT", 5 , -6)
-		self.HealthBarsContainer.healthBar.selectedBorder:SetAtlas("UI-HUD-Nameplates-Selected")
-		self.HealthBarsContainer.healthBar.selectedBorder:SetPoint("TOPLEFT",  -2, 3)
-		self.HealthBarsContainer.healthBar.selectedBorder:SetPoint("BOTTOMRIGHT", 2, -3)
-		self.HealthBarsContainer.healthBar.deselectedOverlay:SetAtlas("ui-hud-nameplates-deselected-overlay")
-		self.HealthBarsContainer.healthBar.deselectedOverlay:SetPoint("TOPLEFT", 0, 1)
-		self.HealthBarsContainer.healthBar.deselectedOverlay:SetPoint("BOTTOMRIGHT", 0, -1)
-	end
+	
+	self.HealthBarsContainer.healthBar.bgTexture:SetTexture("Interface\\Addons\\PlateColor\\texture\\bgTexture.png")
+	self.HealthBarsContainer.healthBar.bgTexture:SetPoint("TOPLEFT", -1 , 1)
+	self.HealthBarsContainer.healthBar.bgTexture:SetPoint("BOTTOMRIGHT", 1 , -1)
 	self.HealthBarsContainer.healthBar.bgTexture:SetAlpha(PlateColorDB.hpbgAlpha)
+	ns.BorderSetting(self.HealthBarsContainer,self.HealthBarsContainer.healthBar.selectedBorder)
+	ns.BorderSetting(self.HealthBarsContainer,self.HealthBarsContainer.healthBar.deselectedOverlay)
+	self.HealthBarsContainer.healthBar.deselectedOverlay:SetVertexColor(0, 0, 0, 1)
+	
 
 	if not self.HitTestFrameShow then
 		self.HitTestFrameShow = self:CreateTexture(nil, "OVERLAY")
@@ -155,8 +142,8 @@ function ns.SetPoints(self)
 	end
 	PixelUtil.SetPoint(self.castBar, "BOTTOMLEFT", self, "BOTTOMLEFT", -hpWidht+50, 0);--施法条宽度
 	PixelUtil.SetPoint(self.castBar, "BOTTOMRIGHT", self, "BOTTOMRIGHT", hpWidht-50, 0);--施法条宽度
-	PixelUtil.SetPoint(self.HealthBarsContainer, "BOTTOMLEFT", self.castBar, "TOPLEFT", 0, 2);--血条宽度跟随施法条
-	PixelUtil.SetPoint(self.HealthBarsContainer, "BOTTOMRIGHT", self.castBar, "TOPRIGHT", 0, 2);--血条宽度跟随施法条
+	PixelUtil.SetPoint(self.HealthBarsContainer, "BOTTOMLEFT", self.castBar, "TOPLEFT", 0, 1);--血条宽度跟随施法条
+	PixelUtil.SetPoint(self.HealthBarsContainer, "BOTTOMRIGHT", self.castBar, "TOPRIGHT", 0, 1);--血条宽度跟随施法条
 	PixelUtil.SetHeight(self.HealthBarsContainer, hpHeight);--血条高度
 	PixelUtil.SetHeight(self.castBar,castBarHeight)--施法条高度
 	PixelUtil.SetHeight(self.castBar.Spark,castBarHeight*2)--施法闪光高度

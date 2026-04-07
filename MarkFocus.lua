@@ -126,6 +126,6 @@ ns.event("READY_CHECK", function(event)
 	if PlateColorDB.setFocusIcon == 0 then return end
 	local inInstance, instanceType = IsInInstance()
 	if inInstance and instanceType == "party" then
-		SendChatMessage(ns.L["我的焦点标记是"].." {rt"..PlateColorDB.setFocusIcon.."}", "PARTY")
+		C_ChatInfo.SendChatMessage(ns.L["我的焦点标记是"].." {rt"..PlateColorDB.setFocusIcon.."}", "PARTY")
 	end
 end)

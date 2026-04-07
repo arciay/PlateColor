@@ -1,5 +1,56 @@
 local _, ns = ...
 
+function ns.BorderSetting(unitFrame, frame, offset)
+	frame:SetTexture(ns.HPBorderTexture[PlateColorDB.hpBorderTexture])
+	local brset = ns.HPBorderTextureList[PlateColorDB.hpBorderTexture]
+	local margin = brset.margin
+	local XY = brset.XY
+	if offset then
+		XY = XY * offset+2
+	end
+
+	frame:SetTextureSliceMargins(margin, margin, margin, margin)
+	frame:ClearAllPoints()
+	frame:SetPoint("TOPLEFT", unitFrame.healthBar, "TOPLEFT", -XY, XY)
+	frame:SetPoint("BOTTOMRIGHT", unitFrame.healthBar, "BOTTOMRIGHT", XY, -XY)
+
+	--血条遮罩
+	if not unitFrame.healthBar.customMask then
+		unitFrame.healthBar.customMask = unitFrame.healthBar:CreateMaskTexture()
+		unitFrame.healthBar.customMask:SetAllPoints(unitFrame.healthBar)
+		unitFrame.healthBar:GetStatusBarTexture():AddMaskTexture(unitFrame.healthBar.customMask)
+	end
+	unitFrame.healthBar.customMask:SetTextureSliceMargins(margin, margin, margin, margin)
+	unitFrame.healthBar.customMask:SetTexture(ns.HPBorderMask[PlateColorDB.hpBorderTexture], "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE")
+	--血条背景遮罩
+	if not unitFrame.healthBar.BGMask then
+		unitFrame.healthBar.BGMask = unitFrame.healthBar:CreateMaskTexture()
+		unitFrame.healthBar.BGMask:SetAllPoints(unitFrame.healthBar.bgTexture)
+		unitFrame.healthBar.bgTexture:AddMaskTexture(unitFrame.healthBar.BGMask)
+	end
+	unitFrame.healthBar.BGMask:SetTextureSliceMargins(margin, margin, margin, margin)
+	unitFrame.healthBar.BGMask:SetTexture(ns.HPBorderMask[PlateColorDB.hpBorderTexture], "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE")
+	--施法条遮罩
+	local castbar = unitFrame.CastBar or unitFrame.castBar
+	if castbar then
+		if not castbar.customMask then
+			castbar.customMask = castbar:CreateMaskTexture()
+			castbar.customMask:SetAllPoints(castbar)
+			castbar:GetStatusBarTexture():AddMaskTexture(castbar.customMask)
+		end
+		castbar.customMask:SetTextureSliceMargins(margin, margin, margin, margin)
+		castbar.customMask:SetTexture(ns.HPBorderMask[PlateColorDB.hpBorderTexture], "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE")
+		--施法条背景遮罩
+		if not castbar.BGMask then
+			castbar.BGMask = castbar:CreateMaskTexture()
+			castbar.BGMask:SetAllPoints(castbar.Background)
+			castbar.Background:AddMaskTexture(castbar.BGMask)
+		end
+		castbar.BGMask:SetTextureSliceMargins(margin, margin, margin, margin)
+		castbar.BGMask:SetTexture(ns.HPBorderMask[PlateColorDB.hpBorderTexture], "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE")
+	end
+end
+
 function ns.UpdateHpTexture(unitFrame)
 	if not unitFrame or not unitFrame.unit then return end
 		
@@ -7,15 +58,11 @@ function ns.UpdateHpTexture(unitFrame)
 	--鼠标指向材质
 	if not unitFrame.MouseoverTexture then
 		unitFrame.MouseoverTexture = unitFrame.healthBar:CreateTexture(nil, "OVERLAY")
-		unitFrame.MouseoverTexture:SetPoint("TOPLEFT", unitFrame.healthBar, "TOPLEFT", -4, 3)
-		unitFrame.MouseoverTexture:SetPoint("BOTTOMRIGHT", unitFrame.healthBar, "BOTTOMRIGHT", 4, -3)
+		unitFrame.MouseoverTexture:SetPoint("TOPLEFT", unitFrame.healthBar, "TOPLEFT", -5, 5)
+		unitFrame.MouseoverTexture:SetPoint("BOTTOMRIGHT", unitFrame.healthBar, "BOTTOMRIGHT", 5, -5)
 	end
 	if unitFrame.MouseoverTexture then
-		if PlateColorDB.hpBorder then
-			unitFrame.MouseoverTexture:SetTexture("Interface\\Addons\\PlateColor\\texture\\MouseoverTexture.png")
-		else
-			unitFrame.MouseoverTexture:SetAtlas("UI-HUD-Nameplates-Selected")
-		end
+		ns.BorderSetting(unitFrame, unitFrame.MouseoverTexture,2)
 		unitFrame.MouseoverTexture:Hide()
 	end
 	--焦点材质
@@ -47,6 +94,12 @@ function ns.UpdateHpTexture(unitFrame)
 		unitFrame.ArrowRight:Hide()
 	end
 end
+
+function ns.TextureSetting(unitFrame)
+	ns.UpdateHpTexture(unitFrame)
+	ns.SetPoints(unitFrame)
+end
+
 
 function ns.UpdateTargetTexture(unitFrame)
 	if not unitFrame or not unitFrame.unit then return end

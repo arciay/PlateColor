@@ -34,3 +34,9 @@ hooksecurefunc("CompactUnitFrame_UpdateName", function(unitFrame)
     end
 	ns.CteatLevelText(unitFrame)
 end)
+
+ns.event("NAME_PLATE_UNIT_ADDED", function(event, unit)
+	local namePlate = C_NamePlate.GetNamePlateForUnit(unit,false)
+	local unitFrame = namePlate.UnitFrame
+	ns.CteatLevelText(unitFrame)
+end)

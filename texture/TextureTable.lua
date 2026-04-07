@@ -29,6 +29,60 @@ ns.HpTextures = {
 	["ElvUI"] = "Interface\\Addons\\PlateColor\\texture\\StatusBar\\ElvUI.tga",
 }
 
+--边框材质,大部分来自platynator
+ns.HPBorderTexture = {
+	["4px"] = "Interface\\Addons\\PlateColor\\texture\\Border\\slight-square.png",
+	["2px"] = "Interface\\Addons\\PlateColor\\texture\\Border\\thin-square.png",
+	["1px"] = "Interface\\Addons\\PlateColor\\texture\\Border\\1px-square.png",
+
+	["Round Bold"] = "Interface\\Addons\\PlateColor\\texture\\Border\\round-square.png",
+	["Round Medium"] = "Interface\\Addons\\PlateColor\\texture\\Border\\round-slight-square.png",
+	["Round Thin"] = "Interface\\Addons\\PlateColor\\texture\\Border\\round-thin-square.png",
+
+	["Soft1"] = "Interface\\Addons\\PlateColor\\texture\\Border\\soft-square1.png",
+	["Soft2"] = "Interface\\Addons\\PlateColor\\texture\\Border\\soft-square2.png",
+	["Soft3"] = "Interface\\Addons\\PlateColor\\texture\\Border\\soft-square3.png",
+
+	["Blizzard Health"] = "Interface\\Addons\\PlateColor\\texture\\Border\\blizzard-health-square.png",
+	["Blizzard Cast Bar"] = "Interface\\Addons\\PlateColor\\texture\\Border\\blizzard-cast-bar-square.png",
+	["Blizzard Classic"] = "Interface\\Addons\\PlateColor\\texture\\Border\\blizzard-classic-square.png",
+}
+ns.HPBorderMask = {
+	["4px"] = "Interface\\Addons\\PlateColor\\texture\\Border\\slight-square-mask.png",
+	["2px"] = "Interface\\Addons\\PlateColor\\texture\\Border\\thin-square-mask.png",
+	["1px"] = "Interface\\Addons\\PlateColor\\texture\\Border\\1px-square-mask.png",
+
+	["Round Bold"] = "Interface\\Addons\\PlateColor\\texture\\Border\\round-square-mask.png",
+	["Round Medium"] = "Interface\\Addons\\PlateColor\\texture\\Border\\round-slight-square-mask.png",
+	["Round Thin"] = "Interface\\Addons\\PlateColor\\texture\\Border\\round-thin-square-mask.png",
+
+	["Soft1"] = "Interface\\Addons\\PlateColor\\texture\\Border\\soft-square-mask.png",
+	["Soft2"] = "Interface\\Addons\\PlateColor\\texture\\Border\\soft-square-mask.png",
+	["Soft3"] = "Interface\\Addons\\PlateColor\\texture\\Border\\soft-square-mask.png",
+
+	["Blizzard Health"] = "Interface\\Addons\\PlateColor\\texture\\Border\\blizzard-health-square-mask.png",
+	["Blizzard Cast Bar"] = "Interface\\Addons\\PlateColor\\texture\\Border\\blizzard-cast-bar-square-mask.png",
+	["Blizzard Classic"] = "Interface\\Addons\\PlateColor\\texture\\Border\\blizzard-classic-square-mask.png",
+
+}
+ns.HPBorderTextureList = {
+	["4px"] = {margin = 6, XY = 3},
+	["2px"] = {margin = 4, XY = 2},
+	["1px"] = {margin = 6, XY = 0},
+
+	["Round Bold"] = {margin = 23, XY = 4},
+	["Round Medium"] = {margin = 23, XY = 1},
+	["Round Thin"] = {margin = 23, XY = 0},
+
+	["Soft1"] = {margin = 22, XY = 1},
+	["Soft2"] = {margin = 22, XY = 2},
+	["Soft3"] = {margin = 22, XY = 4},
+
+	["Blizzard Health"] = {margin = 19, XY = 1},
+	["Blizzard Cast Bar"] = {margin = 17, XY = 1},
+	["Blizzard Classic"] = {margin = 22, XY = 1},
+}
+
 --箭头材质
 ns.ArrowTexture = {
 	["EthricArrow"] = "Interface\\Addons\\PlateColor\\texture\\Arrow\\EthricArrow.tga",
@@ -46,8 +100,8 @@ ns.ArrowTexture = {
 	["Arrow-green"]  = "Interface\\Addons\\PlateColor\\texture\\Arrow\\Arrow-green.tga",
 	["Arrow-orange"] = "Interface\\Addons\\PlateColor\\texture\\Arrow\\Arrow-orange.tga",
 	["Arrow-pink"]   = "Interface\\Addons\\PlateColor\\texture\\Arrow\\Arrow-pink.tga",
-	["Arrow-purple"] = "Interface\\Addons\\PlateColor\\texture\\Arrow\\Arrow-purple",
-	["Arrow-red"]    = "Interface\\Addons\\PlateColor\\texture\\Arrow\\Arrow-red",
+	["Arrow-purple"] = "Interface\\Addons\\PlateColor\\texture\\Arrow\\Arrow-purple.tga",
+	["Arrow-red"]    = "Interface\\Addons\\PlateColor\\texture\\Arrow\\Arrow-red.tga",
 	["Arrow-yellow"] = "Interface\\Addons\\PlateColor\\texture\\Arrow\\Arrow-yellow.tga",
 
 }
