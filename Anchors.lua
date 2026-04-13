@@ -67,7 +67,7 @@ function ns.SetPoints(self)
 		self.HitTestFrameShow:SetTexture("Interface\\Addons\\PlateColor\\texture\\HitTexture.png")
 		self.HitTestFrameShow:SetAlpha(0.8)
 	end
-	self.HitTestFrameShow:SetShown(PlateColorDB.HitTestShow)
+	self.HitTestFrameShow:SetShown(PlateColorDB.HitTestShow and (not self:IsFriend() or not PlateColorDB.HitHelp))
 	local setupOptions = NamePlateSetupOptions--暴雪的一些默认设置项
 	if setupOptions.unitNameInsideHealthBar then
 		local extraXOffset = 10;
@@ -83,7 +83,6 @@ function ns.SetPoints(self)
 	end
 	if not InCombatLockdown() then
 		if PlateColorDB.HitHelp then
-			self.HitTestFrameShow:Hide()
 			C_NamePlateManager.SetNamePlateHitTestInsets(Enum.NamePlateType.Friendly, 10000, 10000, 10000, 10000)--左右上下
 		else
 			C_NamePlateManager.SetNamePlateHitTestInsets(Enum.NamePlateType.Friendly, -PlateColorDB.HitWidth, -PlateColorDB.HitWidth, -PlateColorDB.HitHeight, -PlateColorDB.HitBottom)
