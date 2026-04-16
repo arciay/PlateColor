@@ -6,7 +6,7 @@
 ## Category-zhCN: 姓名板
 ## IconTexture: 135451
 ## SavedVariables: PlateColorDB
-## Version: 20260416
+## Version: 20260417
 
 texture\TextureTable.lua
 DB\XML.xml
@@ -27,4 +27,6 @@ PlateAuras.lua
 Personal.lua
 PlateAbsorb.lua
 PlateColor.lua
+PlateDotList.lua
+PlateDotSet.lua
 Update.lua
