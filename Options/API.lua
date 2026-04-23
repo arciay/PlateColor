@@ -179,7 +179,7 @@ local PercentData = {
 			abbreviationIsGlobal = false
 		},
 		{
-			breakpoint = 0.1,--0.12%
+			breakpoint = 0.00001,--0.12%
 			abbreviation = "%",
 			significandDivisor = 0.01,
 			fractionDivisor = 100,
@@ -187,10 +187,9 @@ local PercentData = {
 		},
 	})
 }
---百分比功能
-function ns.percent(unit)
-	local percent = UnitHealthPercent(unit, true, CurveConstants.ScaleTo100)
-	return AbbreviateNumbers(percent,PercentData)
+--百分比简化
+function ns.percent(number)
+	return AbbreviateNumbers(number,PercentData)
 end
 
 --脱战后执行

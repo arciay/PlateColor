@@ -241,6 +241,7 @@ hooksecurefunc(NamePlateHealthBarMixin,"UpdateTextStringWithValues", function(se
 	elseif PlateColorDB.hpValue then
 		self.PCText:SetText(ns.value(value))
 	elseif PlateColorDB.hpPercent then
-		self.PCText:SetText(string.format("%d%%", HealthPercent))
+		--self.PCText:SetText(string.format("%d%%", HealthPercent))
+		self.PCText:SetText(string.format("%s", ns.percent(HealthPercent)))
 	end
 end)
