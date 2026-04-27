@@ -63,7 +63,6 @@ hooksecurefunc("CompactUnitFrame_UpdateName", function(unitFrame)
 	end
 end)
 local function TrySetOnlyName(self)
-	if not PlateColorDB.onlyNameNpc then return end
 	if not self.unit then return end
 	if self:IsForbidden() then
 		SystemFont_NamePlate:SetFont(SystemFont_NamePlate:GetFont(),1,"OUTLINE")
