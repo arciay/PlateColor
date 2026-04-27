@@ -69,8 +69,6 @@ local function TrySetOnlyName(self)
 		SystemFont_NamePlate_Outlined:SetFont(SystemFont_NamePlate_Outlined:GetFont(),1,"OUTLINE")
 		SystemFont_NamePlate:SetFont(SystemFont_NamePlate:GetFont(),PlateColorDB.helpNameScale,"OUTLINE")
 		SystemFont_NamePlate_Outlined:SetFont(SystemFont_NamePlate_Outlined:GetFont(),PlateColorDB.helpNameScale,"OUTLINE")
-		SystemFont_NamePlate:SetSmoothScaling(false)
-		SystemFont_NamePlate_Outlined:SetSmoothScaling(false)
 	end
 	if not PlateColorDB.onlyNameNpc then return end
 	if not self:IsPlayer() and (self:IsForbidden() or not UnitCanAttack("player",self.unit)) then
